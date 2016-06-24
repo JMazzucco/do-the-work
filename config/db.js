@@ -1,3 +1,4 @@
 module.exports = {
-    url : 'mongodb://localhost/stencil-dev'
+    url : 'mongodb://jmazzucco:freedom5*@ds017258.mlab.com:17258/planmyday'
 }
+
