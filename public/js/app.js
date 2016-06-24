@@ -1,1 +1,1 @@
-app.js
+angular.module('sampleApp', ['appRoutes', 'MainCtrl', 'NerdCtrl']);

@@ -1,19 +1,26 @@
-angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
-    $routeProvider
 
-        // home page
-        .when('/', {
-            templateUrl: 'views/home.html',
-            controller: 'MainController'
-        })
+angular.module('appRoutes', ['ui.router'])
 
-        // nerds page that will use the NerdController
-        .when('/nerds', {
-            templateUrl: 'views/nerd.html',
-            controller: 'NerdController'
-        });
 
-    $locationProvider.html5Mode(true);
+.config(function($stateProvider, $urlRouterProvider) {
 
-}]);
+    $urlRouterProvider.otherwise('/home');
+
+    $stateProvider
+
+    // HOME STATES AND NESTED VIEWS ========================================
+    .state('home', {
+        url: '/home',
+        template: 'hello'
+    })
+
+
+    // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+    .state('nerd', {
+        url: '/nerd',
+        template: "wtf"
+
+    });
+
+}); // closes $routerApp.config()
