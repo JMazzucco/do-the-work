@@ -1,7 +1,4 @@
-
-
 angular.module('appRoutes', [])
-
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -12,15 +9,16 @@ angular.module('appRoutes', [])
     // HOME STATES AND NESTED VIEWS ========================================
     .state('home', {
         url: '/home',
-        templateUrl: 'views/home.html'
+        templateUrl: 'views/home.html',
+        controller: 'MainCtrl'
     })
 
 
     // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
     .state('nerd', {
         url: '/nerd',
-        templateUrl: "views/nerd.html"
-
+        templateUrl: "views/nerd.html",
+        controller: 'NerdCtrl'
     });
 
-}); // closes $routerApp.config()
+});
