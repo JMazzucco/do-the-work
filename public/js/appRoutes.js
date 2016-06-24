@@ -12,14 +12,14 @@ angular.module('appRoutes', [])
     // HOME STATES AND NESTED VIEWS ========================================
     .state('home', {
         url: '/home',
-        template: 'hello'
+        templateUrl: 'views/home.html'
     })
 
 
     // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
     .state('nerd', {
         url: '/nerd',
-        templateUrl: "./nerd.html"
+        templateUrl: "views/nerd.html"
 
     });
 
