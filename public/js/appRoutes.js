@@ -1,6 +1,6 @@
 
 
-angular.module('appRoutes', ['ui.router'])
+angular.module('appRoutes', [])
 
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -19,7 +19,7 @@ angular.module('appRoutes', ['ui.router'])
     // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
     .state('nerd', {
         url: '/nerd',
-        template: "wtf"
+        templateUrl: "./nerd.html"
 
     });
 
