@@ -58,7 +58,8 @@ app.use(function(err, req, res, next) {
 
 
 // open a connection with the news database running on our Mongo server
-require('./models/Posts')
+require('./models/Posts');
+require('./models/Comments');
 mongoose.connect('mongodb://localhost/news');
 
 
