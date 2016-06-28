@@ -5,11 +5,10 @@ var Post = mongoose.model('Post');
 var Comment = mongoose.model('Comment');
 
 
- /* GET home page. */
-  router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
-  });
-
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
 
 
 router.get('/posts', function(req, res, next) {
@@ -32,7 +31,9 @@ router.param('post', function(req, res, next, id) {
 	});
 });
 
-
+router.get('/post/:post', function(req, res) {
+	res.json(req.post);
+});
 
 router.post('/posts', function(req, res, next) {
   var post = new Post(req.body);
