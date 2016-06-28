@@ -31,8 +31,6 @@
 
 			<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>
 
-
-
 			<span style="font-size:20px; margin-left:10px;">
 			<a ng-show="post.link" href="{{post.link}}">
 				{{post.title}}
@@ -89,6 +87,22 @@
       {{comment.body}}
     </span>
   </div>
+
+<form ng-submit="addComment()"
+	style="margin-top:30px">
+	<h3>Add a new comment</h3>
+
+	<div class="form-group">
+		<input type="text"
+		class="form-control"
+		placeholder="Comment"
+		ng-model="body"></input>
+	</div>
+
+	<button type="submit" class="btn btn-primary">Post</button>
+</form>
 </script>
+
+
 </body>
 </html>
