@@ -4,9 +4,14 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 	$stateProvider
 		.state('home', {
-			url: '/home',
-			templateUrl: '/home.html',
-			controller: 'MainCtrl'
+		  url: '/home',
+		  templateUrl: '/home.html',
+		  controller: 'MainCtrl',
+		  resolve: {
+		    postPromise: ['posts', function(posts){
+		      return posts.getAll();
+		    }]
+		  }
 		})
 		.state('posts', {
 			url: '/posts/{id}',
@@ -18,7 +23,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 }]);
 
-app.factory('posts', ['http', function($http){
+app.factory('posts', ['$http', function($http){
+
+
 
 	var o = {
 		posts: [
@@ -30,15 +37,13 @@ app.factory('posts', ['http', function($http){
 		]
 	};
 
+  o.getAll = function() {
+    return $http.get('/posts').success(function(data){
+      angular.copy(data, o.posts);
+    });
+  };
+
 return o;
-
-	o.getAll = function() {
-		return $http.get('/posts').success(function(data){
-			angular.copy(data, o.posts);
-		})
-
-	});
-};
 
 }]);
 
