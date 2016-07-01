@@ -18,7 +18,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 }]);
 
-app.factory('posts', [ function(){
+app.factory('posts', ['http', function($http){
 
 	var o = {
 		posts: [
@@ -31,6 +31,14 @@ app.factory('posts', [ function(){
 	};
 
 return o;
+
+	o.getAll = function() {
+		return $http.get('/posts').success(function(data){
+			angular.copy(data, o.posts);
+		})
+
+	});
+};
 
 }]);
 
