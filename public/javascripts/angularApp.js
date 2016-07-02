@@ -54,6 +54,13 @@ app.factory('posts', ['$http', function($http){
 			});
 	};
 
+	o.get = function(id) {
+		return $http.get('/posts/' + id).then(function(res) {
+			return res.data;
+		});
+	};
+
+
 return o;
 
 }]);
