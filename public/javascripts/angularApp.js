@@ -43,6 +43,12 @@ app.factory('posts', ['$http', function($http){
     });
   };
 
+  o.create = function() {
+  	return $http.post('/posts', post).success(function(data){
+  		o.posts.push(data);
+  	})
+  }
+
 return o;
 
 }]);
