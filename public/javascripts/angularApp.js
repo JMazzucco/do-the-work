@@ -41,11 +41,11 @@ app.factory('posts', ['$http', function($http){
     });
   };
 
-  o.create = function() {
-  	return $http.post('/posts', post).success(function(data){
-  		o.posts.push(data);
-  	})
-  };
+o.create = function(post) {
+  return $http.post('/posts', post).success(function(data){
+    o.posts.push(data);
+  });
+};
 
 
 
@@ -69,6 +69,7 @@ function($scope, posts){
 		  title: $scope.title,
 		  link: $scope.link
 		});
+
 		$scope.title= '';
 	  $scope.link= '';
 	};
