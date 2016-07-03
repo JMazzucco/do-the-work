@@ -16,7 +16,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		.state('posts', {
 			url: '/posts/{id}',
 			templateUrl: '/posts.html',
-			controller: 'PostsCtrl'
+			controller: 'PostsCtrl',
+			resolve: {
+				post: ['$stateParams', 'posts', function($stateParams, posts) {
+					return posts.get($stateParams.id);
+				}]
+			}
 		})
 
 	$urlRouterProvider.otherwise('home');
@@ -34,6 +39,8 @@ app.factory('posts', ['$http', function($http){
 		  {title: 'post 5', upvotes: 4}
 		]
 	};
+
+	// posts
 
   o.getAll = function() {
     return $http.get('/posts').success(function(data){
@@ -59,6 +66,13 @@ app.factory('posts', ['$http', function($http){
 			return res.data;
 		});
 	};
+
+	// comments
+
+	o.addComment = function(id, comment) {
+		return $http.post('/posts/' + id + '/comments', comment);
+		});
+	}
 
 
 return o;
@@ -95,9 +109,11 @@ app.controller('PostsCtrl', [
 '$scope',
 '$stateParams',
 'posts',
-function($scope, $stateParams, posts){
+function($scope, posts, post){
 
-	$scope.post = posts.posts[$stateParams.id];
+	$scope.post = post;
+
+
 
 $scope.addComment = function(){
   if($scope.body === '') { return; }
