@@ -78,7 +78,7 @@ app.factory('posts', ['$http', function($http){
 		return $http.put('/posts' + post._id + '/comments/' + comment._id + '/upvote')
 			.success(function(data){
 				comment.upvotes += 1;
-			})
+			});
 	};
 
 
