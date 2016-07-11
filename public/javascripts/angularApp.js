@@ -39,6 +39,19 @@ app.factory('auth', ['$http', '$window', function($http, $window){
 		return $window.localStorage['flapper-news-token']
 	};
 
+	auth.isLoggedIn = function(){
+		var token = auth.getToken();
+
+		if(token){
+			var payload = JSON.parse($window.atob(token.split('.')[1]));
+
+			return payload.exp > Date.now() / 1000;
+		} else {
+			return false;
+		}
+
+	};
+
 	return auth;
 
 }])
