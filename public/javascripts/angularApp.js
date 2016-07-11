@@ -67,6 +67,11 @@ app.factory('auth', ['$http', '$window', function($http, $window){
 		});
 	};
 
+	auth.logIn = function(user){
+		return $http.post('/login', user).success(function(data){
+			auth.saveToken(data.token);
+		});
+	};
 
 	return auth;
 
