@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.get('/posts', auth, function(req, res, next) {
+router.get('/posts', function(req, res, next) {
   Post.find(function(err, posts){
     if(err){ return next(err); }
 
@@ -46,7 +46,7 @@ router.get('/posts/:post', function(req, res, next) {
 });
 
 
-router.post('/posts', function(req, res, next) {
+router.post('/posts', auth, function(req, res, next) {
   var post = new Post(req.body);
 
   post.save(function(err, post){
