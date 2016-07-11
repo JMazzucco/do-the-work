@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.get('/posts', function(req, res, next) {
+router.get('/posts', auth, function(req, res, next) {
   Post.find(function(err, posts){
     if(err){ return next(err); }
 
@@ -56,7 +56,7 @@ router.post('/posts', function(req, res, next) {
   });
 });
 
-router.put('/posts/:post/upvote', function(req, res, next) {
+router.put('/posts/:post/upvote', auth, function(req, res, next) {
   req.post.upvote(function(err, post){
     if (err) { return next(err); }
 
@@ -64,7 +64,7 @@ router.put('/posts/:post/upvote', function(req, res, next) {
   });
 });
 
-router.post('/posts/:post/comments', function(req, res, next) {
+router.post('/posts/:post/comments', auth, function(req, res, next) {
 	var comment = new Comment(req.body);
 	comment.post = req.post;
 
@@ -94,7 +94,7 @@ router.param('comment', function(req, res, next, id) {
   });
 });
 
-router.put('/posts/:post/comments/:comment/upvote', function(req, res, next) {
+router.put('/posts/:post/comments/:comment/upvote', auth, function(req, res, next) {
 
   req.comment.upvote(function(err, comment){
     if (err) { return next(err); }
