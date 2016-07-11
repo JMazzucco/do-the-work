@@ -52,6 +52,18 @@ app.factory('auth', ['$http', '$window', function($http, $window){
 
 	};
 
+	auth.currentUser = function() {
+		if(auth.isLoggedIn()){
+			var token = auth.getToken();
+			var payload = JSON.parse($window.atob(token.split('.')[1]));
+
+			return payload.username;
+		}
+	};
+
+
+
+
 	return auth;
 
 }])
