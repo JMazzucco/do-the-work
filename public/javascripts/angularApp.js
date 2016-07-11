@@ -28,6 +28,13 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 }]);
 
+app.factory('auth', ['$http', '$window', function($http, $window){
+	var auth = {};
+
+	return auth;
+
+}])
+
 app.factory('posts', ['$http', function($http){
 
 	var o = {
