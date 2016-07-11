@@ -1,4 +1,5 @@
 var express = require('express');
+var jtw = require('express-jwt');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
@@ -6,6 +7,8 @@ var Comment = mongoose.model('Comment');
 var passport = require('passport');
 var User = mongoose.model('User');
 
+// middleware for authenticating jwt tokens
+var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
 router.param('post', function(req, res, next, id) {
   var query = Post.findById(id);
