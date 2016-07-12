@@ -1,5 +1,5 @@
 var express = require('express');
-var jtw = require('express-jwt');
+var jwt = require('express-jwt');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
@@ -108,7 +108,7 @@ router.put('/posts/:post/comments/:comment/upvote', auth, function(req, res, nex
 
 router.post('/register', function(req, res, next){
   if(!req.body.username || !req.body.password){
-    return res.status(400).json({message: Please fill out all fields});
+    return res.status(400).json({message: 'Please fill out all fields'});
   }
 
   var user = new User();
