@@ -101,7 +101,7 @@ app.factory('auth', ['$http', '$window', function($http, $window){
 
 }])
 
-app.factory('posts', ['$http', function($http){
+app.factory('posts', ['$http', 'auth' function($http, auth){
 
 	var o = {
 		posts: [
