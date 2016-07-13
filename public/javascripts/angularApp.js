@@ -104,13 +104,7 @@ app.factory('auth', ['$http', '$window', function($http, $window){
 app.factory('posts', ['$http', 'auth', function($http, auth){
 
 	var o = {
-		posts: [
-		  {title: 'post 1', upvotes: 5},
-		  {title: 'post 2', upvotes: 2},
-		  {title: 'post 3', upvotes: 15},
-		  {title: 'post 4', upvotes: 9},
-		  {title: 'post 5', upvotes: 4}
-		]
+		posts: []
 	};
 
 	// posts
@@ -187,10 +181,10 @@ function($scope, posts, auth){
 	  $scope.link= '';
 	};
 
-
 	$scope.incrementUpvotes = function(post) {
 	  posts.upvote(post);
 	};
+
 }]);
 
 app.controller('PostsCtrl', [
