@@ -1,0 +1,50 @@
+
+  <div class="page-header">
+    <h1>Flapper News</h1>
+  </div>
+
+	<div ng-repeat="post in posts | orderBy: '-upvotes'">
+
+		<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>
+
+    <span ng-show="post.author">
+      posted by <a>{{post.author}}</a> |
+    </span>
+
+		<span style="font-size:20px; margin-left:10px;">
+  		<a ng-show="post.link" href="{{post.link}}">
+  			{{post.title}}
+  		</a>
+
+  		<span ng-hide="post.link">
+  			{{post.title}}
+  		</span>
+	  </span>
+
+  	<span>
+  	  <a href="#/posts/{{post._id}}">Comments</a>
+  	</span>
+
+		- upvotes: {{post.upvotes}}
+	</div>
+
+	<form ng-submit="addPost()"
+  ng-show="isLoggedIn()"
+  style="margin-top:30px;">
+
+  <div ng-hide="isLoggedIn()">
+    <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add a post.</h3>
+  </div>
+
+	<div class="form-group">
+		<input class="form-control" type="text" placeholder="Title" ng-model="title"></input>
+	</div>
+
+	<div class="form-group">
+		<input class="form-control" type="text" placeholder="Link" ng-model="link"></input>
+		<br/>
+		<button class="btn btn-primary" type="submit">Post</button>
+	</div>
+	</form>
+  </div>
+

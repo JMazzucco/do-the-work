@@ -5,7 +5,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	$stateProvider
 		.state('home', {
 		  url: '/home',
-		  templateUrl: '/home.html',
+		  templateUrl: '/views/home.html',
 		  controller: 'MainCtrl',
 		  resolve: {
 		    postPromise: ['posts', function(posts){
@@ -15,7 +15,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		})
 		.state('posts', {
 			url: '/posts/{id}',
-			templateUrl: '/posts.html',
+			templateUrl: '/views/posts.html',
 			controller: 'PostsCtrl',
 			resolve: {
 				post: ['$stateParams', 'posts', function($stateParams, posts) {
@@ -25,7 +25,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		})
 		.state('login', {
 			url: '/login',
-			templateUrl: '/login.html',
+			templateUrl: '/views/login.html',
 			controller: 'AuthCtrl',
 			onEnter: ['$state', 'auth', function($state, auth){
 				if(auth.isLoggedIn()){
@@ -35,7 +35,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		})
 		.state('register', {
 			url: '/register',
-			templateUrl: '/register.html',
+			templateUrl: '/views/register.html',
 			controller: 'AuthCtrl',
 			onEnter: ['$state', 'auth', function($state, auth){
 				if(auth.isLoggedIn()){
