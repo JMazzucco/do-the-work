@@ -168,7 +168,8 @@ return o;
 app.controller('MainCtrl', [
 '$scope',
 'posts',
-function($scope, posts){
+'auth',
+function($scope, posts, auth){
   $scope.posts = posts.posts;
 
 	$scope.addPost = function() {
@@ -194,7 +195,8 @@ app.controller('PostsCtrl', [
 '$scope',
 'posts',
 'post',
-function($scope, posts, post){
+'auth',
+function($scope, posts, post, auth){
 
 	$scope.post = post;
 
