@@ -172,6 +172,8 @@ app.controller('MainCtrl', [
 function($scope, posts, auth){
   $scope.posts = posts.posts;
 
+  $scope.isLoggedIn = auth.isLoggedIn;
+
 	$scope.addPost = function() {
 
 		if(!$scope.title || $scope.title === '') {return;}
@@ -199,6 +201,8 @@ app.controller('PostsCtrl', [
 function($scope, posts, post, auth){
 
 	$scope.post = post;
+
+  $scope.isLoggedIn = auth.isLoggedIn;
 
 	$scope.addComment = function(){
 	  if($scope.body === '') { return; }
