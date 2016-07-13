@@ -22,12 +22,10 @@ router.param('post', function(req, res, next, id) {
   });
 });
 
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-
 
 router.get('/posts', function(req, res, next) {
   Post.find(function(err, posts){
@@ -144,7 +142,5 @@ router.post('/login', function(req, res, next){
 
 })
 
-
 module.exports = router;
-
 

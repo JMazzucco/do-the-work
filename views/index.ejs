@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Angular - Thinkster Tutorial</title>
@@ -8,10 +9,8 @@
    	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
     <script src="/javascripts/angularApp.js"></script>
     <style> .glyphicon-thumbs-up { cursor:pointer } </style>
-
-
-
 </head>
+
 <body ng-app="flapperNews">
   <nav class="navbar navbar-default pull-right" ng-controller="NavCtrl">
     <ul class="nav navbar-nav">
@@ -25,63 +24,60 @@
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
 			<ui-view></ui-view>
-
-
-</div>
-
-
-
-   <script type="text/ng-template" id="/home.html">
-	  <div class="page-header">
-	    <h1>Flapper News</h1>
-	  </div>
-
-		<div ng-repeat="post in posts | orderBy: '-upvotes'">
-
-			<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>
-
-      <span ng-show="post.author">
-        posted by <a>{{post.author}}</a> |
-      </span>
-
-			<span style="font-size:20px; margin-left:10px;">
-			<a ng-show="post.link" href="{{post.link}}">
-				{{post.title}}
-			</a>
-
-			<span ng-hide="post.link">
-				{{post.title}}
-			</span>
-		</span>
-
-		<span>
-		  <a href="#/posts/{{post._id}}">Comments</a>
-		</span>
-
-			- upvotes: {{post.upvotes}}
-		</div>
-
-		<form ng-submit="addPost()"
-    ng-show="isLoggedIn()"
-    style="margin-top:30px;">
-
-    <div ng-hide="isLoggedIn()">
-      <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add a post.</h3>
     </div>
+  </div>
 
-		<div class="form-group">
-			<input class="form-control" type="text" placeholder="Title" ng-model="title"></input>
-		</div>
+<script type="text/ng-template" id="/home.html">
+  <div class="page-header">
+    <h1>Flapper News</h1>
+  </div>
 
-		<div class="form-group">
-			<input class="form-control" type="text" placeholder="Link" ng-model="link"></input>
-			<br/>
-			<button class="btn btn-primary" type="submit">Post</button>
-		</div>
-		</form>
+	<div ng-repeat="post in posts | orderBy: '-upvotes'">
+
+		<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>
+
+    <span ng-show="post.author">
+      posted by <a>{{post.author}}</a> |
+    </span>
+
+		<span style="font-size:20px; margin-left:10px;">
+  		<a ng-show="post.link" href="{{post.link}}">
+  			{{post.title}}
+  		</a>
+
+  		<span ng-hide="post.link">
+  			{{post.title}}
+  		</span>
+	  </span>
+
+  	<span>
+  	  <a href="#/posts/{{post._id}}">Comments</a>
+  	</span>
+
+		- upvotes: {{post.upvotes}}
 	</div>
 
-	</script>
+	<form ng-submit="addPost()"
+  ng-show="isLoggedIn()"
+  style="margin-top:30px;">
+
+  <div ng-hide="isLoggedIn()">
+    <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add a post.</h3>
+  </div>
+
+	<div class="form-group">
+		<input class="form-control" type="text" placeholder="Title" ng-model="title"></input>
+	</div>
+
+	<div class="form-group">
+		<input class="form-control" type="text" placeholder="Link" ng-model="link"></input>
+		<br/>
+		<button class="btn btn-primary" type="submit">Post</button>
+	</div>
+	</form>
+  </div>
+
+</script>
 
 
 <script type="text/ng-template" id="/posts.html">
@@ -93,8 +89,6 @@
       <span ng-hide="post.link">
         {{post.title}}
       </span>
-
-
     </h3>
   </div>
 
@@ -107,25 +101,24 @@
     </span>
   </div>
 
-<form ng-submit="addComment()"
-	ng-show="isLoggedIn()"
-  style="margin-top:30px">
-	<h3>Add a new comment</h3>
+  <form ng-submit="addComment()"
+  	ng-show="isLoggedIn()"
+    style="margin-top:30px">
+  	<h3>Add a new comment</h3>
 
-	<div class="form-group">
-		<input type="text"
-		class="form-control"
-		placeholder="Comment"
-		ng-model="body"></input>
-	</div>
+  	<div class="form-group">
+  		<input type="text"
+  		class="form-control"
+  		placeholder="Comment"
+  		ng-model="body"></input>
+  	</div>
 
-	<button type="submit" class="btn btn-primary">Post</button>
-</form>
+  	<button type="submit" class="btn btn-primary">Post</button>
+  </form>
 
-<div ng-hide="isLoggedIn()">
-  <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can comment.</h3>
-</div>
-
+  <div ng-hide="isLoggedIn()">
+    <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can comment.</h3>
+  </div>
 </script>
 
 <script type="text/ng-template" id="/register.html">
@@ -157,7 +150,6 @@
   </form>
 </script>
 
-
 <script type="text/ng-template" id="/login.html">
   <div class="page-header">
     <h1>Flapper News</h1>
@@ -177,16 +169,17 @@
       placeholder="Username"
       ng-model="user.username"></input>
     </div>
+
     <div class="form-group">
       <input type="password"
       class="form-control"
       placeholder="Password"
       ng-model="user.password"></input>
     </div>
+
     <button type="submit" class="btn btn-primary">Log In</button>
   </form>
 </script>
-
 
 </body>
 </html>
