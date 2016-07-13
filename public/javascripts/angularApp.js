@@ -153,7 +153,6 @@ app.factory('posts', ['$http', 'auth', function($http, auth){
 		});
 	};
 
-
 return o;
 
 }]);
