@@ -8,8 +8,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		  templateUrl: '/views/home.html',
 		  controller: 'MainCtrl',
 		  resolve: {
-		    postPromise: ['posts', function(posts){
-		      return posts.getAll();
+		    postPromise: ['posts', 'auth', function(posts, auth){
+		      return posts.getAll(auth.currentUser());
 		    }]
 		  },
 		 	onEnter: ['$state', 'auth', function($state, auth){
@@ -113,14 +113,12 @@ app.factory('auth', ['$http', '$window', function($http, $window){
 
 app.factory('posts', ['$http', 'auth', function($http, auth){
 
-	var o = {
-		posts: []
-	};
+	var o = { posts:[] };
 
-	// posts
+	// post methods
 
-  o.getAll = function() {
-    return $http.get('/posts').success(function(data){
+  o.getAll = function(currentUser) {
+		$http.get('/posts', {params: {currentUser: currentUser}}).success(function(data){
       angular.copy(data, o.posts);
     });
   };
@@ -147,7 +145,7 @@ app.factory('posts', ['$http', 'auth', function($http, auth){
 		});
 	};
 
-	// comments
+	// comments methods
 
 	o.addComment = function(id, comment) {
 		return $http.post('/posts/' + id + '/comments', comment, {
@@ -183,7 +181,8 @@ function($scope, posts, auth){
 
 		posts.create({
 		  title: $scope.title,
-		  link: $scope.link
+		  link: $scope.link,
+		  user: auth.currentUser()
 		});
 
 		$scope.title= '';
@@ -219,7 +218,6 @@ function($scope, posts, post, auth){
 	};
 
 	$scope.incrementUpvotes = function(comment) {
-
 		posts.upvoteComment(post, comment);
 	};
 

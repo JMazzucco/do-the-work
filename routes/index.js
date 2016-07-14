@@ -22,13 +22,21 @@ router.param('post', function(req, res, next, id) {
   });
 });
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
 router.get('/posts', function(req, res, next) {
+  var user = req.query.currentUser
+  var query = Post.find({ user: user });
+
   Post.find(function(err, posts){
+    if(err){ return next(err); }
+
+    console.log(posts);
+  });
+
+  query.exec(function (err, posts){
     if(err){ return next(err); }
 
     res.json(posts);
@@ -79,8 +87,6 @@ router.post('/posts/:post/comments', auth, function(req, res, next) {
 		});
 	});
 });
-
-
 
 router.param('comment', function(req, res, next, id) {
   var query = Comment.findById(id);
@@ -135,7 +141,6 @@ router.post('/login', function(req, res, next){
     } else {
       return res.status(401).json(info);
     }
-
 
   })(req, res, next);
 
