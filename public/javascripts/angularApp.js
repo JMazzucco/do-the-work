@@ -187,12 +187,11 @@ function($scope, posts, auth){
 
 		posts.create({
 		  title: $scope.title,
-		  link: $scope.link,
 		  user: auth.currentUser()
 		});
 
 		$scope.title= '';
-	  $scope.link= '';
+
 	};
 
 	$scope.incrementUpvotes = function(post) {
