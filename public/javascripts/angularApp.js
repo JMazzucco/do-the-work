@@ -145,6 +145,12 @@ app.factory('posts', ['$http', 'auth', function($http, auth){
 		});
 	};
 
+	o.delete = function(post) {
+		return $http.delete('/posts/' + post._id).then(function(res) {
+			return res.data;
+		});
+	};
+
 	// comments methods
 
 	o.addComment = function(id, comment) {
@@ -191,6 +197,12 @@ function($scope, posts, auth){
 
 	$scope.incrementUpvotes = function(post) {
 	  posts.upvote(post);
+	};
+
+	$scope.deletePost = function(post) {
+		$scope.posts.splice($scope.posts.indexOf(post));
+
+		posts.delete(post);
 	};
 
 }]);
