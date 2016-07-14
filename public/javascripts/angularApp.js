@@ -200,7 +200,7 @@ function($scope, posts, auth){
 	};
 
 	$scope.deletePost = function(post) {
-		$scope.posts.splice($scope.posts.indexOf(post));
+		$scope.posts.splice($scope.posts.indexOf(post), 1);
 
 		posts.delete(post);
 	};
