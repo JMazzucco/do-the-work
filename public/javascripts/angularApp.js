@@ -147,7 +147,7 @@ app.factory('posts', ['$http', 'auth', function($http, auth){
 
 	o.delete = function(post) {
 		return $http.delete('/posts/' + post._id).then(function(res) {
-			return res.data;
+			console.log(res.data);
 		});
 	};
 

@@ -10,18 +10,6 @@ var User = mongoose.model('User');
 // middleware for authenticating jwt tokens
 var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
-router.param('post', function(req, res, next, id) {
-  var query = Post.findById(id);
-
-  query.exec(function (err, post){
-    if (err) { return next(err); }
-    if (!post) { return next(new Error('can\'t find post')); }
-
-    req.post = post;
-    return next();
-  });
-});
-
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
@@ -32,14 +20,24 @@ router.get('/posts', function(req, res, next) {
 
   Post.find(function(err, posts){
     if(err){ return next(err); }
-
-    console.log(posts);
   });
 
   query.exec(function (err, posts){
     if(err){ return next(err); }
 
     res.json(posts);
+  });
+});
+
+router.param('post', function(req, res, next, id) {
+  var query = Post.findById(id);
+
+  query.exec(function (err, post){
+    if (err) { return next(err); }
+    if (!post) { return next(new Error('can\'t find post')); }
+
+    req.post = post;
+    return next();
   });
 });
 
@@ -145,6 +143,19 @@ router.post('/login', function(req, res, next){
   })(req, res, next);
 
 })
+
+router.delete('/posts/:id', function(req, res, next) {
+  Post.findById(req.params.id, function (err, post) {
+    if(err) { return next(err); }
+    if(!post) { return res.sendStatus(404); }
+    post.remove(function(err) {
+      if(err) { return handleError(res, err); }
+      return res.sendStatus(204);
+    });
+  });
+});
+
+
 
 module.exports = router;
 
