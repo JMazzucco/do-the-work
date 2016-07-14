@@ -12,33 +12,25 @@
     </span>
 
 		<span style="font-size:20px; margin-left:10px;">
-  		<a ng-show="post.link" href="{{post.link}}">
+    <a ui-sref="posts({id: post._id})">
   			{{post.title}}
-  		</a>
-
-  		<span ng-hide="post.link">
-  			{{post.title}}
-  		</span>
+    </a>
 	  </span>
 
-  	<span>
-  	  <a href="#/posts/{{post._id}}">Comments</a>
-  	</span>
-
 	</div>
+
+
 
 	<form ng-submit="addPost()"
   ng-show="isLoggedIn()"
   style="margin-top:30px;">
 
   <div ng-hide="isLoggedIn()">
-    <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add a post.</h3>
+    <h3>You need to <a ui-sref="login">Log In</a> or <a ui-sref="register">Register</a> before you can add a post.</h3>
   </div>
 
 	<div class="form-group">
 		<input class="form-control" type="text" placeholder="Task" ng-model="title"></input>
-
-
 
 		<br/>
 		<button class="btn btn-primary" type="submit">Post</button>
