@@ -11,7 +11,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		    postPromise: ['posts', function(posts){
 		      return posts.getAll();
 		    }]
-		  }
+		  },
+		 	onEnter: ['$state', 'auth', function($state, auth){
+				if(!auth.isLoggedIn()){
+					$state.go('login');
+				}
+			}]
 		})
 		.state('posts', {
 			url: '/posts/{id}',
@@ -21,7 +26,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 				post: ['$stateParams', 'posts', function($stateParams, posts) {
 					return posts.get($stateParams.id);
 				}]
-			}
+			},
+			onEnter: ['$state', 'auth', function($state, auth){
+				if(!auth.isLoggedIn()){
+					$state.go('login');
+				}
+			}]
 		})
 		.state('login', {
 			url: '/login',
@@ -44,7 +54,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			}]
 		})
 
-	$urlRouterProvider.otherwise('home');
+	$urlRouterProvider.otherwise('login');
 
 }]);
 
