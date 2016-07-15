@@ -1,24 +1,20 @@
-
   <div class="page-header">
-    <h1>Do the Work</h1>
+    <h1>DO THE WORK</h1>
   </div>
 
-
+<div class="post-box">
 	<div ng-repeat="post in posts | orderBy: '-upvotes'">
 
     <span class="btn glyphicon glyphicon-remove" ng-click="deletePost(post)"></span>
 
-    <span ng-show="post.author">
-      posted by <a>{{post.author}}</a> |
-    </span>
-
-		<span style="font-size:20px; margin-left:10px;">
-    <a ui-sref="posts({id: post._id})">
-  			{{post.title}}
-    </a>
+		<span class="task">
+      <a ui-sref="posts({id: post._id})">
+    			{{post.title}}
+      </a>
 	  </span>
 
 	</div>
+</div>
 
 	<form ng-submit="addPost()"
   ng-show="isLoggedIn()"

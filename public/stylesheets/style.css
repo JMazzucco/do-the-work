@@ -1,8 +1,52 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body,html {
+	height: 100%
 }
 
-a {
-  color: #00B7FF;
+#quote {
+	text-align: center;
+	margin: auto;
+  bottom: 0;
+  height: 100px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+#quote * {
+	color: #fff;
+	text-shadow: 0 1px 5px rgba(0,0,0,.2);
+}
+
+.page-header {
+	text-align: center;
+}
+
+.page-header h1 {
+	font-size: 4em;
+	color: #fff;
+	text-shadow: 0 1px 5px rgba(0,0,0,.3);
+}
+
+.main {
+	padding: 8%;
+}
+
+h1, h2, h3, h4, h5, h6, .glyphicon-remove {
+	color: white;
+}
+
+.task * {
+	font-size:20px;
+	margin-left:10px;
+	color:white;
+	vertical-align: middle;
+}
+
+.post-box{
+  background: rgba(0, 0, 0, .6);
+  border-radius: 5px;
+}
+
+.post-box *:hover {
+	color:#428bca;
 }
