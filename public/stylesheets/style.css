@@ -35,18 +35,18 @@ h1, h2, h3, h4, h5, h6, .glyphicon-remove {
 	color: white;
 }
 
-.task * {
+.task *, .comment p {
 	font-size:20px;
 	margin-left:10px;
 	color:white;
 	vertical-align: middle;
 }
 
-.post-box{
+.post-box {
   background: rgba(0, 0, 0, .6);
   border-radius: 5px;
 }
 
-.post-box *:hover {
-	color:#428bca;
+.task *:hover, .glyphicon-remove:hover, .notes-header h2:hover, .notes-header a:hover {
+	color:tomato;
 }

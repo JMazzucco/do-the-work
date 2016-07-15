@@ -1,26 +1,23 @@
-<div class="page-header">
-  <h3><a ui-sref="home">{{post.title}}</a>
-  </h3>
-</div>
+<div class="notes-header">
+  <a ui-sref="home"><h2>{{post.title}}</h2></a>
 
-<div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
-  <span class="glyphicon glyphicon-thumbs-up"
-    ng-click="incrementUpvotes(comment)"></span>
-  {{comment.upvotes}} - by {{comment.author}}
-  <span style="font-size:20px; margin-left:10px;">
-    {{comment.body}}
-  </span>
 </div>
-
+<div class="post-box">
+  <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
+    <span class="comment">
+      <p>{{comment.body}}</p>
+    </span>
+  </div>
+</div>
 <form ng-submit="addComment()"
 	ng-show="isLoggedIn()"
   style="margin-top:30px">
-	<h3>Add a new comment</h3>
+	<h3>Add Notes</h3>
 
 	<div class="form-group">
 		<input type="text"
 		class="form-control"
-		placeholder="Comment"
+		placeholder="Note"
 		ng-model="body"></input>
 	</div>
 
