@@ -11,7 +11,9 @@
     <style> .glyphicon-thumbs-up { cursor:pointer } </style>
 </head>
 
-<body ng-app="flapperNews">
+<button data-ng-click="getImage()"></button>
+<body ng-app="flapperNews" ng-controller='MainCtrl' class="background-img" ng-style="{'background-image': 'url(' + image_url + ')','background-size': 'cover', 'min-height': '100vh'}" >
+
   <nav class="navbar navbar-default pull-right" ng-controller="NavCtrl">
     <ul class="nav navbar-nav">
       <li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li>

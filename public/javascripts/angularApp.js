@@ -176,7 +176,15 @@ app.controller('MainCtrl', [
 '$scope',
 'posts',
 'auth',
-function($scope, posts, auth){
+'$http',
+function($scope, posts, auth, $http){
+
+	$scope.getImage = function() {
+		return $http.get('/photo').success(function(res){
+			$scope.image_url = res
+		});
+	};
+
   $scope.posts = posts.posts;
 
   $scope.isLoggedIn = auth.isLoggedIn;
@@ -205,6 +213,7 @@ function($scope, posts, auth){
 	};
 
 }]);
+
 
 app.controller('PostsCtrl', [
 '$scope',
