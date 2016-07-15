@@ -46,6 +46,23 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+var API500px = require('500px');
+api500px = new API500px('NGELN6iDrvzFX5vxJhVJCg9heHNseePK8T5yAFal');
+
+api500px.users.getGallery ('15693715', {image_size: 6, rpp: 100}, function(error, results) {
+  if (error) {
+    return console.log(error);
+  }
+
+
+
+  var randomIndex = Math.floor((Math.random() * results.photos.length - 1) + 0);
+  console.log(Math.abs(randomIndex));
+  var randomImageUrl = results.photos[randomIndex].image_url;
+ console.log(randomImageUrl);
+});
+
+
 // error handlers
 
 // development error handler
