@@ -11,8 +11,11 @@
     <style> .glyphicon-thumbs-up { cursor:pointer } </style>
 </head>
 
-<button data-ng-click="getImage()"></button>
-<body ng-app="flapperNews" ng-controller='MainCtrl' class="background-img" ng-style="{'background-image': 'url(' + image_url + ')','background-size': 'cover', 'min-height': '100vh'}" >
+<body
+  ng-app="flapperNews"
+  ng-controller='MainCtrl'
+  ng-init="getImage();getQuote()"
+  ng-style="{'background-image': 'url(' + image_url + ')','background-size': 'cover', 'min-height': '100vh'}">
 
   <nav class="navbar navbar-default pull-right" ng-controller="NavCtrl">
     <ul class="nav navbar-nav">
@@ -27,6 +30,11 @@
 		<div class="col-md-6 col-md-offset-3">
 			<ui-view></ui-view>
     </div>
+  </div>
+
+  <div id="quote">
+    <h4>{{quote}}</h4>
+    <h5>{{quoteAuthor}}</h5>
   </div>
 
 </body>

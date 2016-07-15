@@ -185,6 +185,13 @@ function($scope, posts, auth, $http){
 		});
 	};
 
+	$scope.getQuote = function() {
+		return $http.get('http://quotes.rest/qod.json?category=inspire').success(function(res){
+			$scope.quote = res.contents.quotes[0].quote;
+			$scope.quoteAuthor = res.contents.quotes[0].author
+		});
+	};
+
   $scope.posts = posts.posts;
 
   $scope.isLoggedIn = auth.isLoggedIn;
