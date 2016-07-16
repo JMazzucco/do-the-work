@@ -13,7 +13,7 @@ require('./models/Users');
 require('./config/passport');
 
 
-mongoose.connect('mongodb://localhost/news');
+mongoose.connect('mongodb://heroku_cbxk0r0b:5g7ko44lap5n3fve75f43pj14r@ds023105.mlab.com:23105/heroku_cbxk0r0b');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
