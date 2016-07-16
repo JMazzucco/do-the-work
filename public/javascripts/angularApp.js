@@ -180,16 +180,20 @@ app.controller('MainCtrl', [
 function($scope, posts, auth, $http){
 
 	$scope.getImage = function() {
-		return $http.get('/photo').success(function(res){
+		return $http.get('/photo').success(function(res, status){
 			$scope.image_url = res
 		});
 	};
 
 	$scope.getQuote = function() {
 		return $http.get('http://quotes.rest/qod.json?category=inspire').success(function(res){
-			$scope.quote = res.contents.quotes[0].quote;
-			$scope.quoteAuthor = res.contents.quotes[0].author
-		});
+				$scope.quote = res.contents.quotes[0].quote;
+				$scope.quoteAuthor = res.contents.quotes[0].author;
+			}).error(function(res){
+				//fall back if request limit is reached
+				$scope.quote = "Always work hard on something uncomfortably exciting";
+				$scope.quoteAuthor = "Larry Page";
+			});
 	};
 
   $scope.posts = posts.posts;

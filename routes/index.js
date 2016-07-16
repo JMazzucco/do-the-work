@@ -163,15 +163,18 @@ router.get('/photo', function(req, res, next) {
   api500px = new API500px('NGELN6iDrvzFX5vxJhVJCg9heHNseePK8T5yAFal');
 
   api500px.users.getGallery ('15693715', {image_size: 6, rpp: 100}, function(error, results) {
-    if (error) {
-      return console.log(error);
-    }
 
-    var randomIndex = Math.floor((Math.random() * results.photos.length - 1) + 0);
-    var randomImageUrl = results.photos[randomIndex].image_url;
+    if (error) {
+      console.log(error);
+      var randomImageUrl = '/images/bg-fallback.jpg';
+    } else{
+      var randomIndex = Math.floor((Math.random() * results.photos.length - 1) + 0);
+      var randomImageUrl = results.photos[randomIndex].image_url || '/images/bg-fallback.jpg';
+    };
 
     res.send(randomImageUrl);
   });
+
 });
 
 
