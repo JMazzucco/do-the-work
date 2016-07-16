@@ -33,8 +33,8 @@ body,html {
 
 h1, h2, h3, h4, h5, h6, .glyphicon-remove {
 	color: white;
+	text-shadow: 0 1px 5px rgba(0,0,0,.2)
 }
-
 
 .task *, .comment p {
 	font-size:20px;
@@ -43,11 +43,12 @@ h1, h2, h3, h4, h5, h6, .glyphicon-remove {
 	vertical-align: middle;
 }
 
+.task *:hover, .glyphicon-remove:hover, .notes-header h2:hover, .notes-header a:hover {
+	color:tomato;
+}
+
 .post-box {
   background: rgba(0, 0, 0, .6);
   border-radius: 5px;
 }
 
-.task *:hover, .glyphicon-remove:hover, .notes-header h2:hover, .notes-header a:hover {
-	color:tomato;
-}
